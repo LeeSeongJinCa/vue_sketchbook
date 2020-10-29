@@ -1,12 +1,24 @@
 <template>
-  <div>
+  <div v-if="seen">
     Hello!
+    <button v-on:click="seen = !seen">destory</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
+  data() {
+    return {
+      seen: true,
+    };
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+  },
+  destroyed() {
+    console.log("destroyed");
+  },
 };
 </script>
 
