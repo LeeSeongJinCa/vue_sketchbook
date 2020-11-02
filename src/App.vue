@@ -13,9 +13,7 @@
     </div>
     <div class="v-if">
       <h1>v-if</h1>
-      <p v-if="seen">
-        볼 수 있다.
-      </p>
+      <p v-if="seen">볼 수 있다.</p>
       <button v-on:click="seen = !seen">toggle seen</button>
     </div>
     <div class="v-for v-bind:key">
@@ -86,10 +84,7 @@ export default {
       }
     },
     reverseMessage() {
-      this.message = this.message
-        .split("")
-        .reverse()
-        .join("");
+      this.message = this.message.split("").reverse().join("");
     },
   },
   components: {
