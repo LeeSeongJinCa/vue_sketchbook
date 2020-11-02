@@ -13,12 +13,6 @@ export default {
       seen: true,
     };
   },
-  beforeDestroy() {
-    console.log("beforeDestroy");
-  },
-  destroyed() {
-    console.log("destroyed");
-  },
 };
 </script>
 

@@ -13,7 +13,9 @@
     </div>
     <div class="v-if">
       <h1>v-if</h1>
-      <p v-if="seen">볼 수 있다.</p>
+      <p v-if="seen">
+        볼 수 있다.
+      </p>
       <button v-on:click="seen = !seen">toggle seen</button>
     </div>
     <div class="v-for v-bind:key">
@@ -36,8 +38,159 @@
           v-for="item in groceryList"
           v-bind:todo="item"
           v-bind:key="item.id"
+          v-bind:class="{ items: item.id }"
         />
       </ol>
+    </div>
+    {{
+      message
+        .split(" ")
+        .reverse()
+        .join("")
+    }}
+    <div class="dynamicArgument">
+      <a v-bind:[attributeName]="url">dynamicArgument</a>
+      <p v-on:[eventName]="handleClick">
+        click to console.log
+      </p>
+    </div>
+    <div class="shorthand">
+      <div class="v-bind">
+        <a :href="url">#</a>
+      </div>
+      <div class="v-on">
+        <a @click:event.prevent="handleClick" href="#">#</a>
+      </div>
+    </div>
+    <div class="computed">
+      <div class="reversedMessage">
+        <p>원본 메시지 : {{ message }}</p>
+        <p>역순 메시지: {{ reversedMessage }}</p>
+      </div>
+      <div class="getter_setter">
+        <p>fullName: {{ fullName }}</p>
+        <button @click="handleName">change Name</button>
+      </div>
+    </div>
+    <div class="watch">
+      <div class="watch-example">
+        <p>yes/no 질문을 물어보세요:</p>
+        <input type="text" v-model="question" />
+        <p>{{ answer }}</p>
+      </div>
+    </div>
+    <div class="style">
+      <ul>
+        <todo-item
+          v-for="item in groceryList"
+          v-bind:key="item.id"
+          v-bind:todo="item"
+          class="tododo"
+          :style="{ color: 'red', fontSize: '30px' }"
+        />
+      </ul>
+      <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">
+        flex
+      </div>
+    </div>
+    <div class="v-if">
+      <h1 v-if="awesome">Vue is awesome!</h1>
+      <h1 v-else>oh, no...</h1>
+      <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
+    </div>
+    <div class="key">
+      <template v-if="loginType === 'username'">
+        <label>사용자 이름</label>
+        <input placeholder="사용자 이름을 입력하세요" key="username" />
+      </template>
+      <template v-else>
+        <label>이메일</label>
+        <input placeholder="이메일 주소를 입력하세요" key="email" />
+      </template>
+      <button @click="handleLoginType">로그인 유형 변경</button>
+    </div>
+    <div class="v-for">
+      <ol>
+        <li v-for="(item, i) of items" :key="i">
+          {{ i + 1 }}
+          :
+          {{ item.message }}
+        </li>
+        <li v-for="(item, i) in items" :key="i + 2">
+          {{ i + 1 }}
+          :
+          {{ item.message }}
+        </li>
+      </ol>
+      <ul>
+        <li v-for="(value, name, i) in object" :key="name + i">
+          {{ value }} : {{ name }}
+        </li>
+      </ul>
+      <ol style="display: flex;">
+        <li v-for="n in numbers" :key="n">{{ n }}</li>
+      </ol>
+      <ol style="display: flex;">
+        <li v-for="n in even(numbers)" :key="n">{{ n }}</li>
+      </ol>
+      <ol style="display: flex;">
+        <li v-for="n in evenNumbers" :key="n">{{ n }}</li>
+      </ol>
+    </div>
+    <div class="v-on">
+      <button @click="counter += 1">Add 1</button>
+      <p>버튼을 클릭한 횟수 : {{ counter }}</p>
+      <input type="text" @keyup.enter="submit" />
+      <br />
+      <!-- Alt 또는 Shift와 함께 눌린 경우에도 실행됩니다. -->
+      <button @click.ctrl="counter += 1">A</button>
+
+      <!-- Ctrl 키만 눌려있을 때만 실행됩니다. -->
+      <button @click.ctrl.exact="counter += 1">A</button>
+
+      <!-- 아래 코드는 시스템 키가 눌리지 않은 상태인 경우에만 작동합니다. -->
+      <button @click.exact="counter += 1">A</button>
+    </div>
+    <div class="v-model">
+      <div class="ex1">
+        <input
+          type="text"
+          v-model="message"
+          placeholder="여기를 수정해보세요."
+        />
+        <p>메시지: {{ message }}</p>
+      </div>
+      <div class="ex2">
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <textarea v-model="message" cols="30" rows="10"></textarea>
+      </div>
+      <div class="ex3">
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+      </div>
+      <div class="ex4">
+        <input type="checkbox" id="lee" v-model="checkedNames" value="lee" />
+        <label for="lee">lee</label>
+        <input type="checkbox" id="soo" v-model="checkedNames" value="soo" />
+        <label for="soo">soo</label>
+        <input type="checkbox" id="zoo" v-model="checkedNames" value="zoo" />
+        <label for="zoo">zoo</label>
+        <br />
+        <span>체크한 이름 : {{ checkedNames }}</span>
+      </div>
+      <div class="ex4">
+        <select id="select" v-model="selected">
+          <option value="" disabled>Please select one</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+        </select>
+        <span>선택함 : {{ selected }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +218,33 @@ export default {
         { id: 1, text: "Cheese" },
         { id: 2, text: "Whatever else humans are supposed to eat" },
       ],
+      attributeName: "href",
+      eventName: "click",
+      url: "#",
+      firstName: "First",
+      lastName: "Last",
+      question: "",
+      answer: "질문을 하기 전 까지는 대답할 수 없습니다.",
+      awesome: true,
+      ok: true,
+      loginType: "username",
+      items: [{ message: "Foo" }, { message: "Bar" }],
+      object: {
+        title: "How to do lists in Vue",
+        author: "Jane Doe",
+        publishedAt: "2016-04-10",
+      },
+      numbers: [1, 2, 3, 4, 5, 6],
+      counter: 0,
+      checked: false,
+      checkedNames: [],
+      selected: "",
     };
+  },
+  watch: {
+    question: function(newQuestion) {
+      this.qeustion = newQuestion;
+    },
   },
   methods: {
     async test2() {
@@ -84,37 +263,74 @@ export default {
       }
     },
     reverseMessage() {
-      this.message = this.message.split("").reverse().join("");
+      this.message = this.message
+        .split("")
+        .reverse()
+        .join("");
+    },
+    handleClick() {
+      console.log(123);
+    },
+    handleName() {
+      this.fullName = "Lee SeongJin";
+    },
+    handleLoginType() {
+      if (this.loginType === "username") this.loginType = "email";
+      else this.loginType = "username";
+    },
+    even(numbers) {
+      return numbers.filter((n) => n % 2 === 0);
     },
   },
   components: {
     "hello-world": HelloWorldVue,
     "todo-item": TodoItemVue,
   },
-  beforeCreate() {
-    console.log("beforeCreate");
+  computed: {
+    reversedMessage: function() {
+      return this.message
+        .split("")
+        .reverse()
+        .join("");
+    },
+    fullName: {
+      get: function() {
+        return this.firstName + " " + this.lastName;
+      },
+      set: function(newValue) {
+        const names = newValue.split(" ");
+        this.firstName = names[0];
+        this.lastName = names[names.length - 1];
+      },
+    },
+    evenNumbers: function() {
+      return this.numbers.filter((n) => n % 2 === 0);
+    },
   },
-  created() {
-    console.log("created");
-  },
-  beforeMount() {
-    console.log("beforeMount");
-  },
-  mounted() {
-    console.log("mounted");
-  },
-  beforeUpdate() {
-    console.log("beforeUpdate");
-  },
-  updated() {
-    console.log("updated");
-  },
-  beforeDestroy() {
-    console.log("beforeDestroy");
-  },
-  destroyed() {
-    console.log("destroyed");
-  },
+  // beforeCreate() {
+  //   console.log("beforeCreate");
+  // },
+  // created() {
+  //   console.log("created");
+  // },
+  // beforeMount() {
+  //   console.log("beforeMount");
+  // },
+  // mounted() {
+  //   console.log("mounted");
+  // },
+  // beforeUpdate() {
+  //   console.log("beforeUpdate");
+  // },
+  // updated() {
+  //   console.log("updated");
+  // },
+  // beforeDestroy() {
+  //   console.log("beforeDestroy");
+  // },
+  // destroyed() {
+  //   console.log("destroyed");
+  // },
 };
 </script>
 
@@ -131,5 +347,8 @@ export default {
 }
 .axios > img {
   width: 200px;
+}
+.items {
+  color: red;
 }
 </style>
