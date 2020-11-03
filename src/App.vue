@@ -197,8 +197,10 @@
 
 <script>
 import axios from "axios";
-import TodoItemVue from "./components/TodoItem.vue";
-import HelloWorldVue from "./components/HelloWorld.vue";
+import {
+  TodoItem as TodoItemVue,
+  HelloWorld as HelloWorldVue,
+} from "./components";
 
 export default {
   name: "App",
