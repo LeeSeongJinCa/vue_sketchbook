@@ -192,6 +192,32 @@
         <span>선택함 : {{ selected }}</span>
       </div>
     </div>
+    <div class="counter-event-ex">
+      <p>{{ total }}</p>
+      <button-counter @click.native="log123" v-on:increment="incrementTotal" />
+      <button-counter v-on:increment="incrementTotal" />
+    </div>
+    <div class="customEvent">
+      <currency-value v-model="price" />
+    </div>
+    <!-- Add at 2.2.0 version -->
+    <div class="custom-v-model">
+      <my-checkbox v-model="checked" value="some value" />
+    </div>
+    <div class="single_slot">
+      <h1>나는 부모 컴포넌트의 제목입니다.</h1>
+      <slot-component ref="profile">
+        <p>컨텐츠 1</p>
+        <p>컨텐츠 2</p>
+        <p slot="footer">푸터 정보</p>
+      </slot-component>
+    </div>
+    <div class="reference">
+      <slot-component ref="profile" />
+    </div>
+    <div class="async_component">
+      <async-component />
+    </div>
   </div>
 </template>
 
@@ -200,10 +226,24 @@ import axios from "axios";
 import {
   TodoItem as TodoItemVue,
   HelloWorld as HelloWorldVue,
+  ButtonCounter as ButtonCounterVue,
+  CurrencyValue as CurrencyValueVue,
+  MyCheckbox as MyCheckboxVue,
+  SlotComponent as SlotComponentVue,
+  AsyncComponent as AsyncComponentVue,
 } from "./components";
 
 export default {
   name: "App",
+  components: {
+    "hello-world": HelloWorldVue,
+    "todo-item": TodoItemVue,
+    "button-counter": ButtonCounterVue,
+    "currency-value": CurrencyValueVue,
+    "my-checkbox": MyCheckboxVue,
+    "slot-component": SlotComponentVue,
+    "async-component": AsyncComponentVue,
+  },
   data() {
     return {
       img: "",
@@ -241,6 +281,9 @@ export default {
       checked: false,
       checkedNames: [],
       selected: "",
+      total: 0,
+      price: 0,
+      profile: "Hello, Lee",
     };
   },
   watch: {
@@ -283,10 +326,12 @@ export default {
     even(numbers) {
       return numbers.filter((n) => n % 2 === 0);
     },
-  },
-  components: {
-    "hello-world": HelloWorldVue,
-    "todo-item": TodoItemVue,
+    incrementTotal() {
+      this.total += 1;
+    },
+    log123() {
+      console.log(123);
+    },
   },
   computed: {
     reversedMessage: function() {
