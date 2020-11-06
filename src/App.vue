@@ -216,13 +216,17 @@
       <slot-component ref="profile" />
     </div>
     <div class="async_component">
-      <async-component />
+      <async-component :post="post" />
+    </div>
+    <div class="tree-folder">
+      <folder :root="root" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
 import {
   TodoItem as TodoItemVue,
   HelloWorld as HelloWorldVue,
@@ -230,8 +234,10 @@ import {
   CurrencyValue as CurrencyValueVue,
   MyCheckbox as MyCheckboxVue,
   SlotComponent as SlotComponentVue,
-  AsyncComponent as AsyncComponentVue,
+  // AsyncComponent as AsyncComponentVue,
+  Folder as FolderVue,
 } from "./components";
+import { root } from "./data";
 
 export default {
   name: "App",
@@ -242,7 +248,8 @@ export default {
     "currency-value": CurrencyValueVue,
     "my-checkbox": MyCheckboxVue,
     "slot-component": SlotComponentVue,
-    "async-component": AsyncComponentVue,
+    "async-component": () => import("./components/AsyncComponent"),
+    folder: FolderVue,
   },
   data() {
     return {
@@ -284,6 +291,11 @@ export default {
       total: 0,
       price: 0,
       profile: "Hello, Lee",
+      root,
+      post: {
+        id: 1,
+        title: "new Title",
+      },
     };
   },
   watch: {

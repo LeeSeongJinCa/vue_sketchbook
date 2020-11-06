@@ -5,3 +5,4 @@ export { default as CurrencyValue } from "./CurrencyValue.vue";
 export { default as MyCheckbox } from "./MyCheckbox.vue";
 export { default as SlotComponent } from "./SlotComponent.vue";
 export { default as AsyncComponent } from "./AsyncComponent.vue";
+export { default as Folder } from "./Folder.vue";
