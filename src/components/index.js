@@ -6,3 +6,5 @@ export { default as MyCheckbox } from "./MyCheckbox.vue";
 export { default as SlotComponent } from "./SlotComponent.vue";
 export { default as AsyncComponent } from "./AsyncComponent.vue";
 export { default as Folder } from "./Folder.vue";
+export { default as PropsType } from "./PropsType.vue";
+export { default as CustomEvent } from "./CustomEvent.vue";

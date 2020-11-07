@@ -221,6 +221,12 @@
     <div class="tree-folder">
       <folder :root="root" />
     </div>
+    <div class="props-type">
+      <props-type typeA="date" />
+    </div>
+    <div class="custom-event">
+      <custom-event />
+    </div>
   </div>
 </template>
 
@@ -236,6 +242,8 @@ import {
   SlotComponent as SlotComponentVue,
   // AsyncComponent as AsyncComponentVue,
   Folder as FolderVue,
+  PropsType as PropsTypeVue,
+  CustomEvent as CustomEventVue,
 } from "./components";
 import { root } from "./data";
 
@@ -250,6 +258,8 @@ export default {
     "slot-component": SlotComponentVue,
     "async-component": () => import("./components/AsyncComponent"),
     folder: FolderVue,
+    "props-type": PropsTypeVue,
+    "custom-event": CustomEventVue,
   },
   data() {
     return {
