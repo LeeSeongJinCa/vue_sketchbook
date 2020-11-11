@@ -227,6 +227,34 @@
     <div class="custom-event">
       <custom-event v-on:my-event="logCustom" />
     </div>
+    <slots>
+      <!-- <template v-slot:header>
+        <h1>Page Title</h1>
+      </template> -->
+      <template #header>
+        <h1>Page Title</h1>
+      </template>
+      <template v-slot:default>
+        <p>A paragraph 1</p>
+        <p>A paragraph 2</p>
+      </template>
+      <template v-slot:footer>
+        <p>Page Info</p>
+      </template>
+    </slots>
+    <custom-slots v-slot="{ user = { firstName: 'Guest' } }">
+      {{ user.firstName }}
+    </custom-slots>
+    <tab-ex :current="tabData.current" v-on:handleTabClick="handleTabClick">
+      <template>
+        <p v-if="tabData.current === 'posts'">
+          {{ tabData.article.posts }}
+        </p>
+        <p v-else-if="tabData.current === 'archive'">
+          {{ tabData.article.archive }}
+        </p>
+      </template>
+    </tab-ex>
   </div>
 </template>
 
@@ -244,6 +272,9 @@ import {
   Folder as FolderVue,
   PropsType as PropsTypeVue,
   CustomEvent as CustomEventVue,
+  Slots as SlotsVue,
+  CustomSlots as CustomSlotsVue,
+  TabEx as TabExVue,
 } from "./components";
 import { root } from "./data";
 
@@ -260,6 +291,9 @@ export default {
     folder: FolderVue,
     "props-type": PropsTypeVue,
     "custom-event": CustomEventVue,
+    slots: SlotsVue,
+    "custom-slots": CustomSlotsVue,
+    "tab-ex": TabExVue,
   },
   data() {
     return {
@@ -305,6 +339,19 @@ export default {
       post: {
         id: 1,
         title: "new Title",
+      },
+      slotProps: {
+        user: {
+          firstName: "Lee",
+          lastName: "Seong-Jin",
+        },
+      },
+      tabData: {
+        current: "",
+        article: {
+          posts: "postspostspostspostsposts",
+          archive: "archivearchivearchivearchivearchive",
+        },
       },
     };
   },
@@ -356,6 +403,10 @@ export default {
     },
     logCustom() {
       console.log(1234);
+    },
+    handleTabClick(type) {
+      console.log(type);
+      this.tabData.current = type;
     },
   },
   computed: {
