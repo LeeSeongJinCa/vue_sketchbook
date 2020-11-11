@@ -1,12 +1,12 @@
 <template>
-  <input :type="text" />
+  <input />
 </template>
 
 <script>
-function Person(firstName, lastName) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-}
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+// }
 
 export default {
   name: "propsType",
@@ -15,7 +15,7 @@ export default {
     B: [String, Number],
     C: {
       type: String,
-      required: true,
+      // required: true,
     },
     D: {
       type: Number,
@@ -36,8 +36,8 @@ export default {
         return ["success", "warning", "danger"].indexOf(value) !== -1;
       },
     },
-    typeA: String,
-    author: Person,
+    // typeA: String,
+    // author: Person,
   },
 };
 </script>

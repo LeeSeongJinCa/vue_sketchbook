@@ -9,7 +9,7 @@ export default {
   name: "CustomEvent",
   methods: {
     customEvent: function() {
-      this.$emit("myEvent");
+      this.$emit("my-event");
     },
   },
 };

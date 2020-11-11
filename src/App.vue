@@ -222,10 +222,10 @@
       <folder :root="root" />
     </div>
     <div class="props-type">
-      <props-type typeA="date" />
+      <props-type />
     </div>
     <div class="custom-event">
-      <custom-event />
+      <custom-event v-on:my-event="logCustom" />
     </div>
   </div>
 </template>
@@ -353,6 +353,9 @@ export default {
     },
     log123() {
       console.log(123);
+    },
+    logCustom() {
+      console.log(1234);
     },
   },
   computed: {
