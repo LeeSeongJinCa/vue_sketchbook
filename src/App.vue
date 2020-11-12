@@ -261,7 +261,7 @@
     <transitions />
     <custom-directives />
     <render-function />
-    <div style="margin-top: 300px;" />
+    <div style="margin-top: 1000px;" />
     <router-view />
   </div>
 </template>

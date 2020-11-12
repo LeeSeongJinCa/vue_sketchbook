@@ -18,8 +18,8 @@ export default {
   name: "CustomDirective",
   directives: {
     focus: {
-      inserted(el) {
-        el.focus();
+      inserted() {
+        // el.focus();
         // console.log(el, binding, vnode, oldVNode);
       },
     },
