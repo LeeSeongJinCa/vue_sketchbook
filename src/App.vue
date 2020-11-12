@@ -261,6 +261,9 @@
     </keep-alive>
     <transitions></transitions>
     <custom-directives></custom-directives>
+    <div class="java-project">
+      <java-project></java-project>
+    </div>
   </div>
 </template>
 
@@ -281,6 +284,7 @@ import {
   Slots as SlotsVue,
   CustomSlots as CustomSlotsVue,
   TabEx as TabExVue,
+  JavaProject as JavaProjectVue,
 } from "./components";
 import TransitionsVue from "./components/Transitions/Transitions.vue";
 import CustomDirectiveVue from "./components/CustomDirective/CustomDirective.vue";
@@ -305,6 +309,7 @@ export default {
     "tab-ex": TabExVue,
     transitions: TransitionsVue,
     "custom-directives": CustomDirectiveVue,
+    "java-project": JavaProjectVue,
   },
   data() {
     return {

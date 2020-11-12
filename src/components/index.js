@@ -8,6 +8,7 @@ export { default as AsyncComponent } from "./AsyncComponent.vue";
 export { default as Folder } from "./Folder.vue";
 export { default as PropsType } from "./PropsType.vue";
 export { default as CustomEvent } from "./CustomEvent.vue";
+export { default as JavaProject } from "./JavaProject.vue";
 export { default as Slots } from "./Slots.vue";
 export { default as CustomSlots } from "./CustomSlots.vue";
 export { default as TabEx } from "./TabEx.vue";
