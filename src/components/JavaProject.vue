@@ -2,6 +2,7 @@
   <div>
     JavaProject
     <button @click="getAdvertisements">GET!</button>
+    <br />
     <iframe
       width="480"
       height="270"

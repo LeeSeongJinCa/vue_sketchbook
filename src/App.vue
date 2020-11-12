@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <router-view />
     <div class="axios">
       <img v-bind:src="img" alt="camera" />
     </div>
@@ -261,9 +260,8 @@
     </keep-alive>
     <transitions></transitions>
     <custom-directives></custom-directives>
-    <div class="java-project">
-      <java-project></java-project>
-    </div>
+    <div style="margin-top: 300px;" />
+    <router-view />
   </div>
 </template>
 
@@ -284,7 +282,6 @@ import {
   Slots as SlotsVue,
   CustomSlots as CustomSlotsVue,
   TabEx as TabExVue,
-  JavaProject as JavaProjectVue,
 } from "./components";
 import TransitionsVue from "./components/Transitions/Transitions.vue";
 import CustomDirectiveVue from "./components/CustomDirective/CustomDirective.vue";
@@ -309,7 +306,6 @@ export default {
     "tab-ex": TabExVue,
     transitions: TransitionsVue,
     "custom-directives": CustomDirectiveVue,
-    "java-project": JavaProjectVue,
   },
   data() {
     return {

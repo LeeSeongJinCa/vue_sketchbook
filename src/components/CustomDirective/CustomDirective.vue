@@ -15,9 +15,9 @@ export default {
   name: "CustomDirective",
   directives: {
     focus: {
-      inserted(el, binding, vnode, oldVNode) {
+      inserted(el) {
         el.focus();
-        console.log(el, binding, vnode, oldVNode);
+        // console.log(el, binding, vnode, oldVNode);
       },
     },
     pin: {
