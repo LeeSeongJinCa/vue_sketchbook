@@ -258,8 +258,9 @@
         </template>
       </tab-ex>
     </keep-alive>
-    <transitions></transitions>
-    <custom-directives></custom-directives>
+    <transitions />
+    <custom-directives />
+    <render-function />
     <div style="margin-top: 300px;" />
     <router-view />
   </div>
@@ -285,6 +286,7 @@ import {
 } from "./components";
 import TransitionsVue from "./components/Transitions/Transitions.vue";
 import CustomDirectiveVue from "./components/CustomDirective/CustomDirective.vue";
+import RenderFunctionVue from "./components/RenderFunction/RenderFunction.vue";
 
 import { root } from "./data";
 
@@ -306,6 +308,7 @@ export default {
     "tab-ex": TabExVue,
     transitions: TransitionsVue,
     "custom-directives": CustomDirectiveVue,
+    "render-function": RenderFunctionVue,
   },
   data() {
     return {
