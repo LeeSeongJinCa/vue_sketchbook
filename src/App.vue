@@ -245,16 +245,22 @@
     <custom-slots v-slot="{ user = { firstName: 'Guest' } }">
       {{ user.firstName }}
     </custom-slots>
-    <tab-ex :current="tabData.current" v-on:handleTabClick="handleTabClick">
-      <template>
-        <p v-if="tabData.current === 'posts'">
-          {{ tabData.article.posts }}
-        </p>
-        <p v-else-if="tabData.current === 'archive'">
-          {{ tabData.article.archive }}
-        </p>
-      </template>
-    </tab-ex>
+    <keep-alive>
+      <tab-ex :current="tabData.current" v-on:handleTabClick="handleTabClick">
+        <template>
+          <p v-if="tabData.current === 'posts'">
+            {{ tabData.article.posts }}
+          </p>
+          <p v-else-if="tabData.current === 'archive'">
+            {{ tabData.article.archive }}
+            <input type="checkbox" />
+            <input type="checkbox" />
+          </p>
+        </template>
+      </tab-ex>
+    </keep-alive>
+    <transitions></transitions>
+    <custom-directives></custom-directives>
   </div>
 </template>
 
@@ -276,6 +282,9 @@ import {
   CustomSlots as CustomSlotsVue,
   TabEx as TabExVue,
 } from "./components";
+import TransitionsVue from "./components/Transitions/Transitions.vue";
+import CustomDirectiveVue from "./components/CustomDirective/CustomDirective.vue";
+
 import { root } from "./data";
 
 export default {
@@ -294,6 +303,8 @@ export default {
     slots: SlotsVue,
     "custom-slots": CustomSlotsVue,
     "tab-ex": TabExVue,
+    transitions: TransitionsVue,
+    "custom-directives": CustomDirectiveVue,
   },
   data() {
     return {
@@ -429,6 +440,9 @@ export default {
     evenNumbers: function() {
       return this.numbers.filter((n) => n % 2 === 0);
     },
+  },
+  provide: {
+    ping: 74,
   },
   // beforeCreate() {
   //   console.log("beforeCreate");
